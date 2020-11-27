@@ -17,6 +17,7 @@ module.exports = {
   },
   plugins: [
     ['@vuepress/html-redirect', {
+      countdown: 0,
       duration: 0,
     }],
   ],

@@ -18,8 +18,6 @@ mv hello.js config.js
 
 echo "pre-deploy @localhost:9090"
 
-cd $workingDir
-
 docker run --rm \
     -v ${PWD}/docs/.vuepress/dist:/usr/share/nginx/html/$app \
     --name html -p 9090:80 \

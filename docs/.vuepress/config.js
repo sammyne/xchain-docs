@@ -16,7 +16,9 @@ module.exports = {
     lineNumbers: true,
   },
   plugins: [
-    '@vuepress/html-redirect',
+    ['@vuepress/html-redirect', {
+      duration: 0,
+    }],
   ],
   themeConfig: {
     logo: "/logo.png",

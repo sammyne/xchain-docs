@@ -2,6 +2,7 @@ const { fs, path } = require('@vuepress/shared-utils')
 const configurer = require("./scripts/configurer.js");
 
 module.exports = {
+  base: "/xchain-docs/",
   title: "XuperChain",
   description: "Document for XuperChain",
   markdown: {

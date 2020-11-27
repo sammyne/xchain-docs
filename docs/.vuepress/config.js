@@ -3,6 +3,14 @@ const configurer = require("./scripts/configurer.js");
 
 module.exports = {
   base: "/xchain-docs/",
+  //base: "/",
+  configureWebpack: {
+    resolve: {
+      alias: {
+        '@images': path.resolve(__dirname, "../assets/images")
+      }
+    }
+  },
   title: "XuperChain",
   description: "Document for XuperChain",
   markdown: {
@@ -12,7 +20,7 @@ module.exports = {
     '@vuepress/html-redirect',
   ],
   themeConfig: {
-    logo: "/assets/logo.png",
+    logo: "/logo.png",
     lastUpdated: '最近更新时间', // string | boolean
     nav: [
       {

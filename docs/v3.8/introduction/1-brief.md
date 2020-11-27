@@ -8,7 +8,7 @@ XuperChain是超级链体系下的第一个开源项目，是构建超级联盟�
 
 在网络能力方面，XuperChain具备全球化部署能力，节点通信基于加密的P2P网络，支持广域网超大规模节点，且底层账本支持分叉管理，自动收敛一致性，TDPOS算法确保了大规模节点下的快速共识。在账号安全方面，XuperChain内置了多私钥保护的账号体系，支持权重累计、集合运算等灵活的策略。
 
-![XuperChain架构](/images/arch.png)
+![XuperChain架构](~@images/arch.png)
 
 XuperChain架构
 

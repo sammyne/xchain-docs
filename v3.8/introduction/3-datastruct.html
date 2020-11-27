@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>3. 核心数据结构 | XuperChain</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    
+    <meta name="description" content="Document for XuperChain">
+    
+    <link rel="preload" href="/assets/css/0.styles.c4564de4.css" as="style"><link rel="preload" href="/assets/js/app.cec72cac.js" as="script"><link rel="preload" href="/assets/js/2.d59bbc45.js" as="script"><link rel="preload" href="/assets/js/17.b025d71e.js" as="script"><link rel="prefetch" href="/assets/js/10.9981c0d7.js"><link rel="prefetch" href="/assets/js/11.69bcca4a.js"><link rel="prefetch" href="/assets/js/12.69ddf2bc.js"><link rel="prefetch" href="/assets/js/13.e8a45c32.js"><link rel="prefetch" href="/assets/js/14.783b602b.js"><link rel="prefetch" href="/assets/js/15.2b947dd4.js"><link rel="prefetch" href="/assets/js/16.bd029b2c.js"><link rel="prefetch" href="/assets/js/18.68337b6d.js"><link rel="prefetch" href="/assets/js/19.dc152462.js"><link rel="prefetch" href="/assets/js/20.b627ce87.js"><link rel="prefetch" href="/assets/js/21.67dbbfb9.js"><link rel="prefetch" href="/assets/js/3.b533e7da.js"><link rel="prefetch" href="/assets/js/4.da89c2df.js"><link rel="prefetch" href="/assets/js/5.cd4839f4.js"><link rel="prefetch" href="/assets/js/6.37cb3b99.js"><link rel="prefetch" href="/assets/js/7.52552510.js"><link rel="prefetch" href="/assets/js/8.9bc34c5b.js"><link rel="prefetch" href="/assets/js/9.90c0cfb1.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.c4564de4.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/assets/logo.png" alt="XuperChain" class="logo"> <span class="site-name can-hide">XuperChain</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/v3.8/" class="nav-link router-link-active">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="版本" class="dropdown-title"><span class="title">版本</span> <span class="arrow down"></span></button> <button type="button" aria-label="版本" class="mobile-dropdown-title"><span class="title">版本</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/v3.8/" class="nav-link router-link-active">
+  v3.8
+</a></li></ul></div></div> <a href="https://github.com/xuperchain/docs" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/v3.8/" class="nav-link router-link-active">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="版本" class="dropdown-title"><span class="title">版本</span> <span class="arrow down"></span></button> <button type="button" aria-label="版本" class="mobile-dropdown-title"><span class="title">版本</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/v3.8/" class="nav-link router-link-active">
+  v3.8
+</a></li></ul></div></div> <a href="https://github.com/xuperchain/docs" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>介绍</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/v3.8/introduction/1-brief.html" class="sidebar-link">1. 简介</a></li><li><a href="/v3.8/introduction/2-modules.html" class="sidebar-link">2. 模块</a></li><li><a href="/v3.8/introduction/3-datastruct.html" aria-current="page" class="active sidebar-link">3. 核心数据结构</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/v3.8/introduction/3-datastruct.html#背景" class="sidebar-link">背景</a></li><li class="sidebar-sub-header"><a href="/v3.8/introduction/3-datastruct.html#核心数据结构" class="sidebar-link">核心数据结构</a></li></ul></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>快速开始</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/v3.8/quickstart/basic.html" class="sidebar-link">基本操作</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>技术设计文档</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/v3.8/design_documents/hello.html" class="sidebar-link">你好</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>进阶使用</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/v3.8/advanced_usage/12-world.html" class="sidebar-link">World</a></li><li><a href="/v3.8/advanced_usage/2-hi.html" class="sidebar-link">Hi</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>开发应用</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/v3.8/developing_apps/world.html" class="sidebar-link">World</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>开发手册</span> <!----></p> <!----></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>测试环境</span> <!----></p> <!----></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>其他</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/v3.8/other/world.html" class="sidebar-link">other</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="_3-核心数据结构"><a href="#_3-核心数据结构" class="header-anchor">#</a> 3. 核心数据结构</h1> <h2 id="背景"><a href="#背景" class="header-anchor">#</a> 背景</h2> <p>众所周知，程序=数据结构+算法，了解一个程序的数据结构有助于掌握一个程序的关键设计。本文从背景、功能以及各个字段的用意来剖析XuperChain底层核心数据结构，从而方便XuperChain开发者以及用户更深入地了解XuperChain底层框架的核心数据结构的设计缘由，有助于提高XuperChain开发者更高效的开发，有助于XuperChain用户更好的使用XuperChain来服务自己的业务。</p> <h2 id="核心数据结构"><a href="#核心数据结构" class="header-anchor">#</a> 核心数据结构</h2> <p>涉及到的核心数据结构包括：区块、交易、UTXO、读写集。</p> <h3 id="区块"><a href="#区块" class="header-anchor">#</a> 区块</h3> <ul><li>背景：所谓区块链，简单来说就是不同的区块以DAG方式链接起来形成的链。因此，区块是区块链的基本单元。</li> <li>功能：区块是区块链的基本单元，通常为了提高区块链网络的吞吐，矿工会在一个区块中打包若干个交易。一个区块通常由区块头以及区块体组成。</li></ul> <p><img src="/images/block-img.png" alt=""></p> <ul><li>代码：区块的Proto如下</li></ul> <div class="language-protobuf line-numbers-mode"><pre class="language-protobuf"><code><span class="token keyword">message</span> <span class="token class-name">InternalBlock</span> <span class="token punctuation">{</span>
+    <span class="token comment">// block version</span>
+    <span class="token comment">// 区块版本</span>
+    <span class="token builtin">int32</span> version <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token comment">// Random number used to avoid replay attacks</span>
+    <span class="token comment">// 随机数，用来避免重放攻击</span>
+    <span class="token builtin">int32</span> nonce <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token comment">// blockid generate the hash sign of the block used by sha256</span>
+    <span class="token comment">// 区块的唯一标识</span>
+    <span class="token builtin">bytes</span> blockid <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+    <span class="token comment">// pre_hash is the parent blockid of the block</span>
+    <span class="token comment">// 区块的前置依赖区块ID</span>
+    <span class="token builtin">bytes</span> pre_hash <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+    <span class="token comment">// The miner id</span>
+    <span class="token comment">// 矿工ID</span>
+    <span class="token builtin">bytes</span> proposer <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+    <span class="token comment">// 矿工对区块的签名</span>
+    <span class="token comment">// The sign which miner signed: blockid + nonce + timestamp</span>
+    <span class="token builtin">bytes</span> sign <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">;</span>
+    <span class="token comment">// The pk of the miner</span>
+    <span class="token comment">// 矿工公钥</span>
+    <span class="token builtin">bytes</span> pubkey <span class="token operator">=</span> <span class="token number">7</span><span class="token punctuation">;</span>
+    <span class="token comment">// The Merkle Tree root</span>
+    <span class="token comment">// 默克尔树树根</span>
+    <span class="token builtin">bytes</span> merkle_root <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">;</span>
+    <span class="token comment">// The height of the blockchain</span>
+    <span class="token comment">// 区块所在高度</span>
+    <span class="token builtin">int64</span> height <span class="token operator">=</span> <span class="token number">9</span><span class="token punctuation">;</span>
+    <span class="token comment">// Timestamp of the block</span>
+    <span class="token comment">// 打包区块的时间戳</span>
+    <span class="token builtin">int64</span> timestamp <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span> 
+    <span class="token comment">// Transactions of the block, only txid stored on kv, the detail information</span>
+    <span class="token comment">// stored in another table</span>
+    <span class="token comment">// 交易内容</span>
+    <span class="token keyword">repeated</span> <span class="token positional-class-name class-name">Transaction</span> transactions <span class="token operator">=</span> <span class="token number">11</span><span class="token punctuation">;</span> 
+    <span class="token comment">// The transaction count of the block</span>
+    <span class="token comment">// 区块中包含的交易数量</span>
+    <span class="token builtin">int32</span> tx_count <span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">;</span> 
+    <span class="token comment">// 所有交易hash的merkle tree</span>
+    <span class="token keyword">repeated</span> <span class="token builtin">bytes</span> merkle_tree <span class="token operator">=</span> <span class="token number">13</span><span class="token punctuation">;</span> 
+    <span class="token comment">// 采用DPOS共识算法时，当前是第几轮</span>
+    <span class="token builtin">int64</span> curTerm <span class="token operator">=</span> <span class="token number">16</span><span class="token punctuation">;</span> 
+    <span class="token builtin">int64</span> curBlockNum <span class="token operator">=</span> <span class="token number">17</span><span class="token punctuation">;</span> 
+    <span class="token comment">// 区块中执行失败的交易以及对应的失败原因</span>
+    <span class="token map class-name">map<span class="token punctuation">&lt;</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token builtin">string</span><span class="token punctuation">&gt;</span></span> failed_txs <span class="token operator">=</span> <span class="token number">18</span><span class="token punctuation">;</span> <span class="token comment">// txid -&gt; failed reason</span>
+    <span class="token comment">// 采用POW共识算法时，对应的挖矿难度值</span>
+    <span class="token builtin">int32</span> targetBits <span class="token operator">=</span> <span class="token number">19</span><span class="token punctuation">;</span> 
+    <span class="token comment">// 下面的属性会动态变化</span>
+    <span class="token comment">// If the block is on the trunk</span>
+    <span class="token comment">// 该区块是否在主干上</span>
+    <span class="token builtin">bool</span> in_trunk <span class="token operator">=</span> <span class="token number">14</span><span class="token punctuation">;</span> 
+    <span class="token comment">// Next next block which on trunk</span>
+    <span class="token comment">// 当前区块的后继区块ID</span>
+    <span class="token builtin">bytes</span> next_hash <span class="token operator">=</span> <span class="token number">15</span><span class="token punctuation">;</span> 
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br></div></div><h3 id="交易"><a href="#交易" class="header-anchor">#</a> 交易</h3> <ul><li>背景：区块链网络中的每个节点都是一个状态机，为了给每个节点传递状态，系统引入了交易，作为区块链网络状态更改的最小操作单元。</li> <li>功能：通常表现为普通转账以及智能合约调用。</li> <li>代码：交易的Proto如下</li></ul> <div class="language-protobuf line-numbers-mode"><pre class="language-protobuf"><code><span class="token keyword">message</span> <span class="token class-name">Transaction</span> <span class="token punctuation">{</span>
+    <span class="token comment">// txid is the id of this transaction</span>
+    <span class="token comment">// 交易的唯一标识</span>
+    <span class="token builtin">bytes</span> txid <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token comment">// the blockid the transaction belong to</span>
+    <span class="token comment">// 交易被打包在哪个区块中</span>
+    <span class="token builtin">bytes</span> blockid <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token comment">// Transaction input list</span>
+    <span class="token comment">// UTXO来源</span>
+    <span class="token keyword">repeated</span> <span class="token positional-class-name class-name">TxInput</span> tx_inputs <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+    <span class="token comment">// Transaction output list</span>
+    <span class="token comment">// UTXO去处</span>
+    <span class="token keyword">repeated</span> <span class="token positional-class-name class-name">TxOutput</span> tx_outputs <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+    <span class="token comment">// Transaction description or system contract</span>
+    <span class="token comment">// 交易内容描述或系统合约</span>
+    <span class="token builtin">bytes</span> desc <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">;</span>
+    <span class="token comment">// Mining rewards</span>
+    <span class="token comment">// 矿工奖励</span>
+    <span class="token builtin">bool</span> coinbase <span class="token operator">=</span> <span class="token number">7</span><span class="token punctuation">;</span>
+    <span class="token comment">// Random number used to avoid replay attacks</span>
+    <span class="token comment">// 随机数</span>
+    <span class="token builtin">string</span> nonce <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">;</span>
+    <span class="token comment">// Timestamp to launch the transaction</span>
+    <span class="token comment">// 发起交易的时间戳</span>
+    <span class="token builtin">int64</span> timestamp <span class="token operator">=</span> <span class="token number">9</span><span class="token punctuation">;</span>
+    <span class="token comment">// tx format version; tx格式版本号</span>
+    <span class="token builtin">int32</span> version <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span> 
+    <span class="token comment">// auto generated tx</span>
+    <span class="token comment">// 该交易是否属于系统自动生成的交易</span>
+    <span class="token builtin">bool</span> autogen <span class="token operator">=</span> <span class="token number">11</span><span class="token punctuation">;</span> 
+    <span class="token comment">// 读写集中的读集</span>
+    <span class="token keyword">repeated</span> <span class="token positional-class-name class-name">TxInputExt</span> tx_inputs_ext <span class="token operator">=</span> <span class="token number">23</span><span class="token punctuation">;</span> 
+    <span class="token comment">// 读写集中的写集</span>
+    <span class="token keyword">repeated</span> <span class="token positional-class-name class-name">TxOutputExt</span> tx_outputs_ext <span class="token operator">=</span> <span class="token number">24</span><span class="token punctuation">;</span> 
+    <span class="token comment">// 该交易包含的合约调用请求</span>
+    <span class="token keyword">repeated</span> <span class="token positional-class-name class-name">InvokeRequest</span> contract_requests <span class="token operator">=</span> <span class="token number">25</span><span class="token punctuation">;</span> 
+    <span class="token comment">// 权限系统新增字段</span>
+    <span class="token comment">// 交易发起者, 可以是一个Address或者一个Account</span>
+    <span class="token builtin">string</span> initiator <span class="token operator">=</span> <span class="token number">26</span><span class="token punctuation">;</span> 
+    <span class="token comment">// 交易发起需要被收集签名的AddressURL集合信息，包括用于utxo转账和用于合约调用</span>
+    <span class="token keyword">repeated</span> <span class="token builtin">string</span> auth_require <span class="token operator">=</span> <span class="token number">27</span><span class="token punctuation">;</span> 
+    <span class="token comment">// 交易发起者对交易元数据签名，签名的内容包括auth_require字段</span>
+    <span class="token keyword">repeated</span> <span class="token positional-class-name class-name">SignatureInfo</span> initiator_signs <span class="token operator">=</span> <span class="token number">28</span><span class="token punctuation">;</span> 
+    <span class="token comment">// 收集到的签名</span>
+    <span class="token keyword">repeated</span> <span class="token positional-class-name class-name">SignatureInfo</span> auth_require_signs <span class="token operator">=</span> <span class="token number">29</span><span class="token punctuation">;</span> 
+    <span class="token comment">// 节点收到tx的时间戳，不参与签名</span>
+    <span class="token builtin">int64</span> received_timestamp <span class="token operator">=</span> <span class="token number">30</span><span class="token punctuation">;</span> 
+    <span class="token comment">// 统一签名(支持多重签名/环签名等，与initiator_signs/auth_require_signs不同时使用)</span>
+    <span class="token positional-class-name class-name">XuperSignature</span> xuper_sign <span class="token operator">=</span> <span class="token number">31</span><span class="token punctuation">;</span> 
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br></div></div><h3 id="utxo"><a href="#utxo" class="header-anchor">#</a> UTXO</h3> <ul><li>背景：区块链中比较常见的两种操作，包括普通转账以及合约调用，这两种操作都涉及到了数据状态的引用以及更新。为了描述普通转账涉及到的数据状态的引用以及更新，引入了UTXO(Unspent Transaction Output)。</li> <li>功能：一种记账方式，用来描述普通转账时涉及到的数据状态的引用以及更新。通常由转账来源数据(UtxoInput)以及转账去处数据(UtxoOutput)组成。</li></ul> <p><img src="/images/tx-img.png" alt=""></p> <ul><li>代码：UTXO的Proto如下</li></ul> <div class="language-protobuf line-numbers-mode"><pre class="language-protobuf"><code><span class="token keyword">message</span> <span class="token class-name">Utxo</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 转账数量</span>
+    <span class="token builtin">bytes</span> amount <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token comment">// 转给谁</span>
+    <span class="token builtin">bytes</span> toAddr <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token comment">// 转给谁的公钥</span>
+    <span class="token builtin">bytes</span> toPubkey <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+    <span class="token comment">// 该Utxo属于哪一个交易</span>
+    <span class="token builtin">bytes</span> refTxid <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+    <span class="token comment">// 该Utxo数据哪一个交易的哪一个offset</span>
+    <span class="token builtin">int32</span> refOffset <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// UtxoInput query info to query utxos</span>
+<span class="token comment">// UTXO的转账来源</span>
+<span class="token keyword">message</span> <span class="token class-name">UtxoInput</span> <span class="token punctuation">{</span>
+    <span class="token positional-class-name class-name">Header</span> header <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token comment">// which bcname to select</span>
+    <span class="token comment">// UTXO来源属于哪一条链</span>
+    <span class="token builtin">string</span> bcname <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token comment">// address to select</span>
+    <span class="token comment">// UTXO来源属于哪个address</span>
+    <span class="token builtin">string</span> address <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+    <span class="token comment">// publickey of the address</span>
+    <span class="token comment">// UTXO来源对应的公钥</span>
+    <span class="token builtin">string</span> publickey <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+    <span class="token comment">// totalNeed refer the total need utxos to select</span>
+    <span class="token comment">// 需要的UTXO总额</span>
+    <span class="token builtin">string</span> totalNeed <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+    <span class="token comment">// userSign of input</span>
+    <span class="token comment">// UTXO来源的签名</span>
+    <span class="token builtin">bytes</span> userSign <span class="token operator">=</span> <span class="token number">7</span><span class="token punctuation">;</span>
+    <span class="token comment">// need lock</span>
+    <span class="token comment">// 该UTXO是否需要锁定(内存级别锁定)</span>
+    <span class="token builtin">bool</span> needLock <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// UtxoOutput query results</span>
+<span class="token comment">// UTXO的转账去处</span>
+<span class="token keyword">message</span> <span class="token class-name">UtxoOutput</span> <span class="token punctuation">{</span>
+    <span class="token positional-class-name class-name">Header</span> header <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token comment">// utxo list</span>
+    <span class="token comment">// UTXO去处</span>
+    <span class="token keyword">repeated</span> <span class="token positional-class-name class-name">Utxo</span> utxoList <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token comment">// total selected amount</span>
+    <span class="token comment">// UTXO去处总额</span>
+    <span class="token builtin">string</span> totalSelected <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br></div></div><h3 id="读写集"><a href="#读写集" class="header-anchor">#</a> 读写集</h3> <ul><li>背景：区块链中比较常见的两种操作，包括普通转账以及合约调用，这两种操作都涉及到了数据状态的引用以及更新。为了描述合约调用涉及到的数据状态的引用以及更新，引入了读写集。</li> <li>功能：一种用来描述合约调用时涉及到的数据状态的引用以及更新的技术。通常由读集(TxInputExt)以及写集(TxOutputExt)组成。</li></ul> <p><img src="/images/xupermodel.png" alt=""></p> <ul><li>代码：读写集的Proto如下</li></ul> <div class="language-protobuf line-numbers-mode"><pre class="language-protobuf"><code><span class="token comment">// 扩展输入</span>
+<span class="token keyword">message</span> <span class="token class-name">TxInputExt</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 读集属于哪一个bucket</span>
+    <span class="token builtin">string</span> bucket <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token comment">// 读集对应的key</span>
+    <span class="token builtin">bytes</span> key <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token comment">// 读集属于哪一个txid</span>
+    <span class="token builtin">bytes</span> ref_txid <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+    <span class="token comment">// 读集属于哪一个txid的哪一个offset</span>
+    <span class="token builtin">int32</span> ref_offset <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 扩展输出</span>
+<span class="token keyword">message</span> <span class="token class-name">TxOutputExt</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 写集属于哪一个bucket</span>
+    <span class="token builtin">string</span> bucket <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token comment">// 写集对应的key</span>
+    <span class="token builtin">bytes</span> key <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token comment">// 写集对应的value</span>
+    <span class="token builtin">bytes</span> value <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/xuperchain/docs/edit/master/docs/v3.8/introduction/3-datastruct.md" target="_blank" rel="noopener noreferrer">帮助我们改进此页 :)</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">最近更新时间:</span> <span class="time">11/27/2020, 5:00:32 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/v3.8/introduction/2-modules.html" class="prev">
+        2. 模块
+      </a></span> <span class="next"><a href="/v3.8/quickstart/basic.html">
+        基本操作
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.cec72cac.js" defer></script><script src="/assets/js/2.d59bbc45.js" defer></script><script src="/assets/js/17.b025d71e.js" defer></script>
+  </body>
+</html>

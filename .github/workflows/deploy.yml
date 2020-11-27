@@ -25,6 +25,8 @@ jobs:
       run: |
         echo "node: $(node --version)" &&
         echo "yarn: $(yarn --version)"
+    - name: Renew config for vuepress
+      run: cd docs/.vuepress && sh reconfigure.sh
     - name: Build the static vuepress
       run: |
         yarn &&

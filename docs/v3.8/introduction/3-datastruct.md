@@ -140,7 +140,7 @@ message Transaction {
 - 背景：区块链中比较常见的两种操作，包括普通转账以及合约调用，这两种操作都涉及到了数据状态的引用以及更新。为了描述普通转账涉及到的数据状态的引用以及更新，引入了UTXO(Unspent Transaction Output)。
 - 功能：一种记账方式，用来描述普通转账时涉及到的数据状态的引用以及更新。通常由转账来源数据(UtxoInput)以及转账去处数据(UtxoOutput)组成。
 
-![](/images/tx-img.png)
+![](~@images/tx-img.png)
 
 - 代码：UTXO的Proto如下
 
@@ -198,7 +198,7 @@ message UtxoOutput {
 - 背景：区块链中比较常见的两种操作，包括普通转账以及合约调用，这两种操作都涉及到了数据状态的引用以及更新。为了描述合约调用涉及到的数据状态的引用以及更新，引入了读写集。
 - 功能：一种用来描述合约调用时涉及到的数据状态的引用以及更新的技术。通常由读集(TxInputExt)以及写集(TxOutputExt)组成。
 
-![](/images/xupermodel.png)
+![](~@images/xupermodel.png)
 
 - 代码：读写集的Proto如下
 

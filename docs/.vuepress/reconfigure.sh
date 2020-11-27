@@ -1,3 +1,11 @@
 #!/bin/sh
 
-sed -i 's!base: ".*"!base: "/xchain-docs/"!g' config.js
+M=$(uname -a | awk '{print $1}')
+base='"/xchain-docs/"'
+
+if [[ "$M" == "Darwin" ]]; then
+  sed -i '' "s!base: \".*\"!base: "$base"!" config.js
+else 
+  sed -i    "s!base: \".*\"!base: "$base"!" config.js
+fi
+

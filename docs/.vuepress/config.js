@@ -2,7 +2,7 @@ const { fs, path } = require('@vuepress/shared-utils')
 const configurer = require("./scripts/configurer.js");
 
 module.exports = {
-  base: "/",
+  base: "/", // this will be changed to '/xchain-docs/' on release
   configureWebpack: {
     resolve: {
       alias: {

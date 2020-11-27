@@ -28,22 +28,26 @@ export default {
   },
   computed: {
     collections() {
-      const base = this.$page.path;
+      const base = this.$site.base.slice(0, -1);
+      const version = this.$page.path;
       const suffix = ".html";
 
       const pages = this.$site.pages
-        .filter((v) => v.path.startsWith(base) && v.path.endsWith(suffix))
+        .filter((v) => v.path.startsWith(version) && v.path.endsWith(suffix))
         .map(this.slimDownPage)
         .reduce((out, v) => {
           out[v.path] = v;
           return out;
         }, {});
 
+      const withBase = (v) => base + v;
+
       const newCollection = (v) => {
         let children = v.children
-          .map((v) => base + v + suffix)
+          .map((v) => version + v + suffix)
           .filter((v) => pages[v])
-          .map((v) => pages[v]);
+          .map((v) => pages[v])
+          .map((v) => ({ ...v, path: withBase(v.path) }));
 
         return {
           title: v.title,
@@ -51,8 +55,11 @@ export default {
         };
       };
 
-      //return pages;
-      return this.$site.themeConfig.sidebar[base].map(newCollection);
+      return this.$site.themeConfig.sidebar[version].map(newCollection);
+    },
+
+    tmp() {
+      return this.$site.base.slice(0, -1);
     },
   },
   methods: {
@@ -69,6 +76,9 @@ export default {
         path: page.path,
         title: page.title,
       };
+    },
+    withBase(path) {
+      return this.$site.base.slice(0, -1) + path;
     },
   },
 };

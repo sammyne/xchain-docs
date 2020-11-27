@@ -7,6 +7,9 @@ module.exports = {
   markdown: {
     lineNumbers: true,
   },
+  plugins: [
+    '@vuepress/html-redirect',
+  ],
   themeConfig: {
     logo: "/assets/logo.png",
     lastUpdated: '最近更新时间', // string | boolean

@@ -7,6 +7,7 @@
   "author": "sammyne <lixiangmin01@baidu.com>",
   "license": "ISC",
   "devDependencies": {
+    "@vuepress/plugin-html-redirect": "^0.1.2",
     "@vuepress/shared-utils": "^1.7.1",
     "vuepress": "^1.7.1"
   },
